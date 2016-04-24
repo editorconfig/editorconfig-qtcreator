@@ -1,0 +1,11 @@
+{
+    \"Name\" : \"EditorConfig\",
+    \"Version\" : \"0.1.0\",
+    \"CompatVersion\" : \"0.1.0\",
+    \"Vendor\" : \"Herbert Graeber\",
+    \"Copyright\" : \"(C) 2016 Herbert Graeber\",
+    \"License\" : \"GPL-3\",
+    \"Description\" : \"Override tab, line ending and file ending settings of source files from .editorconfig\",
+    \"Url\" : \"http://graeber-clan.de\",
+    $$dependencyList
+}
