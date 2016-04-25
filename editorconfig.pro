@@ -15,10 +15,8 @@ HEADERS += editorconfigplugin.h \
 
 # Qt Creator linking
 
-QTCREATOR_SOURCES = $$(QTC_SOURCE)
-IDE_BUILD_TREE = $$(QTC_BUILD)
-
-USE_USER_DESTDIR = yes
+isEmpty(QTCREATOR_SOURCES) QTCREATOR_SOURCES = $$(QTC_SOURCE)
+isEmpty(IDE_BUILD_TREE) IDE_BUILD_TREE = $$(QTC_BUILD)
 
 LIBS += -leditorconfig
 
