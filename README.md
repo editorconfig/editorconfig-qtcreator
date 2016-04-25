@@ -21,7 +21,7 @@ Lesser General Public License version 2.1 or version 3 as published
 by the Free Software Foundation.  Please review the following
 information to ensure the GNU Lesser General Public License
 requirements will be met: https://www.gnu.org/licenses/lgpl.html and
-http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.\"
+http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
 
 ## Installation
 
