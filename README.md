@@ -25,6 +25,18 @@ http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
 
 ## Installation
 
+### Binaries
+
+A precompiled plugin for QtCreator Windows with statically linked
+editorconfig-core-c and pcre can be found
+[here](https://github.com/editorconfig/editorconfig-qtcreator/releases/latest).
+It has to be unpacked into the Qt folder (Usually `C:\Qt`).
+
+RPMs for openSUSE Leap 42.1 and Tumbleweed are available from the
+[openSUSE Build Service](http://download.opensuse.org/repositories/home:/hgraeber:/Qt5/).
+
+### From Source
+
 Requirements:
 
 - QtCreator source and build folders
