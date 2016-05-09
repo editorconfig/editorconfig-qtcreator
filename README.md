@@ -41,9 +41,19 @@ Requirements:
 
 - QtCreator source and build folders
 - editorconfig-core-c
+- pcre
 
-The environment variables @QTC_SOURCE@ shall contain the path to qt-creators
-source, @QTC_BUILD@ to it's build folder. Now run
+The last two are best taken from your linux distribution. For Windows they
+usually must be build locally and added to the `INCLUDEPATH` and `LIBS`
+variables. Static editorconfig-core-c and pcre libraries are best for easy
+deployment of the plugin.
+
+For building plugins you usually have to build QtCreator yourself. For
+openSUSE the special libqt5-creator-plusgin-devel RPM provided in the
+repository mentioned above caon be used instead.
+
+The environment variables `QTC_SOURCE` shall contain the path to qt-creators
+source, `QTC_BUILD` to it's build folder. Now run
 
     mkdir build
     cd  build
@@ -51,12 +61,12 @@ source, @QTC_BUILD@ to it's build folder. Now run
     make
     make install
 
-Instead of using the environment variables you can specify QTCREATOR_SOURCES
-and IDE_BUILD_TREE on the qmake command line.
+Instead of using the environment variables you can specify `QTCREATOR_SOURCES`
+and `IDE_BUILD_TREE` on the qmake command line.
 
-Additionally you can specify USE_USER_DESTDIR=yes, so that the plugin is
+Additionally you can specify `USE_USER_DESTDIR=yes`, so that the plugin is
 installed in the users plugin folder for direct use with the next run of
-QtCreator. QtCreator option -noload EditorConfig can be used to suppress
+QtCreator. QtCreator option `-noload EditorConfig` can be used to suppress
 the load of the plugin, for the case that something goes wrong.
 
 ## Supported properties
