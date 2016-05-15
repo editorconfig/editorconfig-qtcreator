@@ -102,7 +102,7 @@ void EditorConfigPlugin::editorAboutToClose(Core::IEditor *editor)
 {
     if (TextEditor::BaseTextEditor *textEditor = qobject_cast<TextEditor::BaseTextEditor *>(editor)) {
         if (TextEditor::TextDocument *textDocument = textEditor->textDocument()) {
-            qDebug() << "EditorConfig: doumentclosed" << textDocument->filePath();
+            qDebug() << "EditorConfig: documentclosed" << textDocument->filePath();
 
             if (auto connection = documents[textDocument]) {
                 textDocument->disconnect(connection);
