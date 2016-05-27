@@ -23,6 +23,9 @@ public:
     bool overrideCodec(const QTextCodec *&codec) const;
 
 private:
+    void message(const QString &msg) const;
+
+    QString file_name;
     QMap<QByteArray, QByteArray> m_data;
 };
 

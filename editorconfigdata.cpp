@@ -6,11 +6,12 @@
 
 #include <editorconfig/editorconfig.h>
 
-#include <QtDebug>
+#include <coreplugin/messagemanager.h>
+
 #include <QtCore/QByteArray>
 
 EditorConfigData::EditorConfigData(const Utils::FileName &name, QObject *parent) :
-    QObject(parent)
+    QObject(parent), file_name(name.toString())
 {
     QByteArray nativeName = QFile::encodeName(name.toString());
     editorconfig_handle handle = editorconfig_handle_init();
@@ -38,7 +39,7 @@ bool EditorConfigData::overrideTabSettings(TextEditor::TabSettings &tabSettings)
     value = m_data["tab_width"];
     int tabSize = value.toInt(&ok);
     if (ok && tabSize > 0 && tabSettings.m_tabSize != tabSize) {
-        qDebug() << "EditorConfig: override tab width with" << tabSize;
+        message(tr("override tab width with %1").arg(tabSize));
         tabSettings.m_tabSize = tabSize;
         ++changed;
     }
@@ -46,7 +47,7 @@ bool EditorConfigData::overrideTabSettings(TextEditor::TabSettings &tabSettings)
     value = m_data["indent_size"];
     int indentSize = value.toInt(&ok);
     if (ok && indentSize > 0 && tabSettings.m_indentSize != indentSize) {
-        qDebug() << "EditorConfig: override indent size with" << indentSize;
+        message(tr("override indent size with %1").arg(indentSize));
         tabSettings.m_indentSize = indentSize;
         ++changed;
     }
@@ -54,14 +55,14 @@ bool EditorConfigData::overrideTabSettings(TextEditor::TabSettings &tabSettings)
     value = m_data["indent_style"];
     if (value == "tab") {
         if (tabSettings.m_tabPolicy != TextEditor::TabSettings::TabsOnlyTabPolicy) {
-            qDebug() << "EditorConfig: override indent style with TabsOnlyTabPolicy";
+            message(tr("override indent style with 'tab'"));
             tabSettings.m_tabPolicy = TextEditor::TabSettings::TabsOnlyTabPolicy;
             ++changed;
         }
     }
     else if (value == "space") {
         if (tabSettings.m_tabPolicy != TextEditor::TabSettings::SpacesOnlyTabPolicy) {
-            qDebug() << "EditorConfig: override indent style with SpacesOnlyTabPolicy";
+            message(tr("override indent style with 'space'"));
             tabSettings.m_tabPolicy = TextEditor::TabSettings::SpacesOnlyTabPolicy;
             ++changed;
         }
@@ -77,24 +78,24 @@ bool EditorConfigData::overrideStorageSettings(TextEditor::StorageSettings &stor
 
     value = m_data["insert_final_newline"];
     if (value == "true" && !storageSettings.m_addFinalNewLine) {
-        qDebug() << "EditorConfig: override add final newline with true";
+        message(tr("override add final newline with 'true'"));
         storageSettings.m_addFinalNewLine = true;
         ++changed;
     }
     else if (value == "false" && storageSettings.m_addFinalNewLine) {
-        qDebug() << "EditorConfig: override add final newline with false";
+        message(tr("override add final newline with 'false'"));
         storageSettings.m_addFinalNewLine = false;
         ++changed;
     }
 
     value = m_data["trim_trailing_whitespace"];
     if (value == "true" && !storageSettings.m_cleanWhitespace) {
-        qDebug() << "EditorConfig: override trim trailing whitespace with true";
+        message(tr("override trim trailing whitespace with 'true'"));
         storageSettings.m_cleanWhitespace = true;
         ++changed;
     }
     else if (value == "false" && storageSettings.m_cleanWhitespace) {
-        qDebug() << "EditorConfig: override trim trailing whitespace with false";
+        message(tr("override trim trailing whitespace with 'false'"));
         storageSettings.m_cleanWhitespace = false;
         ++changed;
     }
@@ -108,9 +109,15 @@ bool EditorConfigData::overrideCodec(const QTextCodec *&codec) const {
     QByteArray value = m_data["charset"];
     QTextCodec *newCodec = QTextCodec::codecForName(value);
     if (newCodec && codec != newCodec) {
+        message(tr("override charset with '%2'").arg(QString::fromLatin1(newCodec->name())));
         codec = newCodec;
         ++changed;
     }
 
     return changed;
+}
+
+void EditorConfigData::message(const QString &msg) const {
+    Core::MessageManager::write(QStringLiteral("%1: %2").arg(file_name, msg),
+                                Core::MessageManager::Silent);
 }
