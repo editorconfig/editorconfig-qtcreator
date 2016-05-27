@@ -27,6 +27,11 @@ EditorConfigData::EditorConfigData(const Utils::FileName &name, QObject *parent)
 
             m_data.insert(name, value);
         }
+    } else {
+        Core::MessageManager::write(
+            QString::fromUtf8("editorconfig: %1")
+                .arg(QString::fromUtf8(editorconfig_get_error_msg(ret))),
+            Core::MessageManager::Flash);
     }
 }
 
