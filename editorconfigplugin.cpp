@@ -63,8 +63,6 @@ void EditorConfigPlugin::editorCreated(Core::IEditor *editor, const QString &nam
 
 void EditorConfigPlugin::overrideSettings(TextEditor::TextDocument *textDocument)
 {
-    qDebug() << "EditorConfig: overrideSettings";
-
     if (!changingDocuments.contains(textDocument)) {
         qDebug() << "EditorConfig: overrideSettings for" << textDocument->filePath();
 
