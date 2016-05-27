@@ -9,7 +9,9 @@
 #include <QtDebug>
 #include <QtCore/QByteArray>
 
-EditorConfigData::EditorConfigData(const Utils::FileName &name) {
+EditorConfigData::EditorConfigData(const Utils::FileName &name, QObject *parent) :
+    QObject(parent)
+{
     QByteArray nativeName = QFile::encodeName(name.toString());
     editorconfig_handle handle = editorconfig_handle_init();
     int ret = editorconfig_parse(nativeName.data(), handle);

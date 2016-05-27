@@ -9,12 +9,14 @@
 #include <texteditor/storagesettings.h>
 #include <utils/fileutils.h>
 
+#include <QtCore/QObject>
 #include <QtCore/QMap>
 #include <QtCore/QTextCodec>
 
-class EditorConfigData {
+class EditorConfigData : QObject {
+    Q_OBJECT
 public:
-    EditorConfigData(const Utils::FileName &);
+    EditorConfigData(const Utils::FileName &, QObject *parent = 0);
 
     bool overrideTabSettings(TextEditor::TabSettings &tabSettings) const;
     bool overrideStorageSettings(TextEditor::StorageSettings &storageSettings) const;
