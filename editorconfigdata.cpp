@@ -48,11 +48,6 @@ bool EditorConfigData::overrideTabSettings(TextEditor::TabSettings &tabSettings)
         tabSettings.m_indentSize = indentSize;
         ++changed;
     }
-    else if (value == "tab" && tabSettings.m_indentSize != tabSettings.m_tabSize) {
-        qDebug() << "EditorConfig: override indent size with tab size";
-        tabSettings.m_indentSize = tabSettings.m_tabSize;
-        ++changed;
-    }
 
     value = m_data["indent_style"];
     if (value == "tab") {
