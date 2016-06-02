@@ -10,6 +10,8 @@
 
 #include <QtCore/QByteArray>
 
+using namespace EditorConfig;
+
 EditorConfigData::EditorConfigData(const Utils::FileName &name, QObject *parent) :
     QObject(parent), file_name(name.toString())
 {

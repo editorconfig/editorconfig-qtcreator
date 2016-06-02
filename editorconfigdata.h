@@ -13,6 +13,8 @@
 #include <QtCore/QMap>
 #include <QtCore/QTextCodec>
 
+namespace EditorConfig {
+
 class EditorConfigData : QObject {
     Q_OBJECT
 public:
@@ -28,5 +30,7 @@ private:
     QString file_name;
     QMap<QByteArray, QByteArray> m_data;
 };
+
+}
 
 #endif
