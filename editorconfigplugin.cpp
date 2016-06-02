@@ -5,6 +5,7 @@
 #include "editorconfigplugin.h"
 
 #include "editorconfigdata.h"
+#include "editorconfiglogging.h"
 
 #include <coreplugin/icore.h>
 #include <coreplugin/editormanager/editormanager.h>
@@ -47,7 +48,7 @@ ExtensionSystem::IPlugin::ShutdownFlag EditorConfigPlugin::aboutToShutdown()
 }
 
 void EditorConfigPlugin::editorCreated(Core::IEditor *editor, const QString &name) {
-    qDebug() << "EditorConfig: created editor" << name;
+    qCDebug(editorConfigLog) << "EditorConfig: created editor" << name;
 
     if (TextEditor::BaseTextEditor *textEditor = qobject_cast<TextEditor::BaseTextEditor *>(editor)) {
         if (TextEditor::TextDocument *textDocument = textEditor->textDocument()) {
@@ -64,7 +65,7 @@ void EditorConfigPlugin::editorCreated(Core::IEditor *editor, const QString &nam
 void EditorConfigPlugin::overrideSettings(TextEditor::TextDocument *textDocument)
 {
     if (!changingDocuments.contains(textDocument)) {
-        qDebug() << "EditorConfig: overrideSettings for" << textDocument->filePath();
+        qCDebug(editorConfigLog) << "EditorConfig: overrideSettings for" << textDocument->filePath();
 
         EditorConfigData data(textDocument->filePath());
 
@@ -90,7 +91,7 @@ void EditorConfigPlugin::overrideSettings(TextEditor::TextDocument *textDocument
 void EditorConfigPlugin::tabSettingsChanged()
 {
     if (TextEditor::TextDocument *textDocument = qobject_cast<TextEditor::TextDocument *>(sender())) {
-        qDebug() << "EditorConfig: tabSettingsChanged" << textDocument->filePath();
+        qCDebug(editorConfigLog) << "EditorConfig: tabSettingsChanged" << textDocument->filePath();
 
         overrideSettings(textDocument);
     }
@@ -100,7 +101,7 @@ void EditorConfigPlugin::editorAboutToClose(Core::IEditor *editor)
 {
     if (TextEditor::BaseTextEditor *textEditor = qobject_cast<TextEditor::BaseTextEditor *>(editor)) {
         if (TextEditor::TextDocument *textDocument = textEditor->textDocument()) {
-            qDebug() << "EditorConfig: documentclosed" << textDocument->filePath();
+            qCDebug(editorConfigLog) << "EditorConfig: documentclosed" << textDocument->filePath();
 
             if (auto connection = documents[textDocument]) {
                 textDocument->disconnect(connection);

@@ -7,11 +7,13 @@ DEFINES += EDITORCONFIG_LIBRARY
 # EditorConfig files
 
 SOURCES += editorconfigplugin.cpp \
-    editorconfigdata.cpp
+    editorconfigdata.cpp \
+    editorconfiglogging.cpp
 
 HEADERS += editorconfigplugin.h \
     editorconfig_global.h \
-    editorconfigdata.h
+    editorconfigdata.h \
+    editorconfiglogging.h
 
 # Qt Creator linking
 
