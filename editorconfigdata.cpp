@@ -29,6 +29,7 @@ EditorConfigData::EditorConfigData(const Utils::FileName &name, QObject *parent)
 
             m_data.insert(name, value);
         }
+        editorconfig_handle_destroy(handle);
     } else {
         Core::MessageManager::write(
             QString::fromUtf8("editorconfig: %1")
