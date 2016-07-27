@@ -30,7 +30,14 @@ EditorConfigData::EditorConfigData(const Utils::FileName &name, QObject *parent)
             m_data.insert(name, value);
         }
         editorconfig_handle_destroy(handle);
-    } else {
+    }
+    else if (ret > 0) {
+        Core::MessageManager::write(
+            QString::fromUtf8("editorconfig: Parse error in file \"%1\", line %2")
+                .arg(QString::fromUtf8(editorconfig_handle_get_err_file(handle))).arg(ret),
+            Core::MessageManager::Flash);
+    }
+    else {
         Core::MessageManager::write(
             QString::fromUtf8("editorconfig: %1")
                 .arg(QString::fromUtf8(editorconfig_get_error_msg(ret))),
