@@ -9,7 +9,9 @@
 
 namespace EditorConfig {
 namespace Internal {
+
 Q_DECLARE_LOGGING_CATEGORY(editorConfigLog)
+
 }
 }
 

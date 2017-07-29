@@ -69,7 +69,7 @@ installed in the users plugin folder for direct use with the next run of
 QtCreator. QtCreator option `-noload EditorConfig` can be used to suppress
 the load of the plugin, for the case that something goes wrong.
 
-## Supported properties
+## Supported Properties
 
 The EditorConfig QtCreator plugin supports the following EditorConfig properties:
 
@@ -79,3 +79,8 @@ The EditorConfig QtCreator plugin supports the following EditorConfig properties
 - tab_width
 - trim_trailing_whitespace
 - insert_final_newline
+
+## Additonal Features
+
+Initial EditorConfig files may be created using the new file wizard. The initial
+values for this file are taken from the current projects C++ and Qml settings.

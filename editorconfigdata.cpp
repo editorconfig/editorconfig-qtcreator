@@ -1,5 +1,5 @@
 /*
- *  Copyright 2016 Herbert Graeber
+ *  Copyright 2016,2017 Herbert Graeber
  */
 
 #include "editorconfigdata.h"
@@ -56,7 +56,7 @@ bool EditorConfigData::overrideTabSettings(TextEditor::TabSettings &tabSettings)
     if (ok && tabSize > 0 && tabSettings.m_tabSize != tabSize) {
         message(tr("override tab width with %1").arg(tabSize));
         tabSettings.m_tabSize = tabSize;
-        ++changed;
+        changed = true;
     }
 
     value = m_data["indent_size"];
@@ -64,7 +64,7 @@ bool EditorConfigData::overrideTabSettings(TextEditor::TabSettings &tabSettings)
     if (ok && indentSize > 0 && tabSettings.m_indentSize != indentSize) {
         message(tr("override indent size with %1").arg(indentSize));
         tabSettings.m_indentSize = indentSize;
-        ++changed;
+        changed = true;
     }
 
     value = m_data["indent_style"];
@@ -72,14 +72,14 @@ bool EditorConfigData::overrideTabSettings(TextEditor::TabSettings &tabSettings)
         if (tabSettings.m_tabPolicy != TextEditor::TabSettings::TabsOnlyTabPolicy) {
             message(tr("override indent style with 'tab'"));
             tabSettings.m_tabPolicy = TextEditor::TabSettings::TabsOnlyTabPolicy;
-            ++changed;
+            changed = true;
         }
     }
     else if (value == "space") {
         if (tabSettings.m_tabPolicy != TextEditor::TabSettings::SpacesOnlyTabPolicy) {
             message(tr("override indent style with 'space'"));
             tabSettings.m_tabPolicy = TextEditor::TabSettings::SpacesOnlyTabPolicy;
-            ++changed;
+            changed = true;
         }
     }
 
@@ -95,24 +95,24 @@ bool EditorConfigData::overrideStorageSettings(TextEditor::StorageSettings &stor
     if (value == "true" && !storageSettings.m_addFinalNewLine) {
         message(tr("override add final newline with 'true'"));
         storageSettings.m_addFinalNewLine = true;
-        ++changed;
+        changed = true;
     }
     else if (value == "false" && storageSettings.m_addFinalNewLine) {
         message(tr("override add final newline with 'false'"));
         storageSettings.m_addFinalNewLine = false;
-        ++changed;
+        changed = true;
     }
 
     value = m_data["trim_trailing_whitespace"];
     if (value == "true" && !storageSettings.m_cleanWhitespace) {
         message(tr("override trim trailing whitespace with 'true'"));
         storageSettings.m_cleanWhitespace = true;
-        ++changed;
+        changed = true;
     }
     else if (value == "false" && storageSettings.m_cleanWhitespace) {
         message(tr("override trim trailing whitespace with 'false'"));
         storageSettings.m_cleanWhitespace = false;
-        ++changed;
+        changed = true;
     }
 
     return changed;
@@ -126,7 +126,7 @@ bool EditorConfigData::overrideCodec(const QTextCodec *&codec) const {
     if (newCodec && codec != newCodec) {
         message(tr("override charset with '%2'").arg(QString::fromLatin1(newCodec->name())));
         codec = newCodec;
-        ++changed;
+        changed = true;
     }
 
     return changed;

@@ -1,19 +1,23 @@
 /*
- *  Copyright 2016 Herbert Graeber
+ *  Copyright 2016,2017 Herbert Graeber
  */
 
 #include "editorconfigplugin.h"
 
 #include "editorconfigdata.h"
 #include "editorconfiglogging.h"
+#include "editorconfigwizard.h"
 
 #include <coreplugin/icore.h>
 #include <coreplugin/editormanager/editormanager.h>
 #include <coreplugin/idocument.h>
+#include <coreplugin/iwizardfactory.h>
 #include <texteditor/textdocument.h>
+#include <extensionsystem/pluginmanager.h>
 
 #include <QtPlugin>
 #include <QtDebug>
+#include <QApplication>
 
 using namespace EditorConfig::Internal;
 
@@ -29,6 +33,15 @@ bool EditorConfigPlugin::initialize(const QStringList &arguments, QString *error
 {
     Q_UNUSED(arguments)
     Q_UNUSED(errorString)
+
+    if (translator.load(QLatin1String("editorconfig")))
+        QApplication::instance()->installTranslator(&translator);
+
+    Core::IWizardFactory::registerFactoryCreator([] {
+        return QList<Core::IWizardFactory *> {
+            new EditorConfigWizard
+        };
+    });
 
     if (Core::EditorManager *editorManager = Core::EditorManager::instance()) {
         connect(editorManager, SIGNAL(editorCreated(Core::IEditor*,QString)), SLOT(editorCreated(Core::IEditor*,QString)));

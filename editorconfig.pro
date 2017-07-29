@@ -8,12 +8,19 @@ DEFINES += EDITORCONFIG_LIBRARY
 
 SOURCES += editorconfigplugin.cpp \
     editorconfigdata.cpp \
-    editorconfiglogging.cpp
+    editorconfiglogging.cpp \
+    editorconfigwizard.cpp \
+    editorconfigwizardpage.cpp \
+    editorconfigwizarddialog.cpp
 
 HEADERS += editorconfigplugin.h \
     editorconfig_global.h \
     editorconfigdata.h \
-    editorconfiglogging.h
+    editorconfiglogging.h \
+    editorconfigwizard.h \
+    editorconfigconstants.h \
+    editorconfigwizardpage.h \
+    editorconfigwizarddialog.h
 
 # Qt Creator linking
 
@@ -32,6 +39,7 @@ QTC_LIB_DEPENDS += \
 
 QTC_PLUGIN_DEPENDS += \
     coreplugin \
+    projectexplorer \
     texteditor
 
 QTC_PLUGIN_RECOMMENDS += \
@@ -44,3 +52,9 @@ include($$QTCREATOR_SOURCES/src/qtcreatorplugin.pri)
 DISTFILES += \
     README.md \
     .editorconfig
+
+FORMS += \
+    editorconfigpage.ui
+
+TRANSLATIONS += \
+    editorconfig_de.ts

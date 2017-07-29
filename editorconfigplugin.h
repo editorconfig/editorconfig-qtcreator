@@ -1,5 +1,5 @@
 /*
- *  Copyright 2016 Herbert Graeber
+ *  Copyright 2016,2017 Herbert Graeber
  */
 
 #ifndef EDITORCONFIG_H
@@ -15,6 +15,7 @@
 #include <QtCore/QMultiMap>
 #include <QtCore/QSet>
 #include <QtCore/QMetaObject>
+#include <QTranslator>
 
 namespace EditorConfig {
 namespace Internal {
@@ -39,6 +40,8 @@ private slots:
     void editorAboutToClose(Core::IEditor *editor);
 
 private:
+    QTranslator translator;
+
     QMap<TextEditor::TextDocument *, QMetaObject::Connection> documents;
     QSet<TextEditor::TextDocument *> changingDocuments;
 };
