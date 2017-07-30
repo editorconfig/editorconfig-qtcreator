@@ -19,6 +19,7 @@
 #include <QtDebug>
 #include <QApplication>
 
+using namespace ExtensionSystem;
 using namespace EditorConfig::Internal;
 
 EditorConfigPlugin::EditorConfigPlugin()
@@ -34,8 +35,26 @@ bool EditorConfigPlugin::initialize(const QStringList &arguments, QString *error
     Q_UNUSED(arguments)
     Q_UNUSED(errorString)
 
-    if (translator.load(QLatin1String("editorconfig")))
-        QApplication::instance()->installTranslator(&translator);
+    QStringList uiLanguages;
+    uiLanguages = QLocale::system().uiLanguages();
+    QString overrideLanguage = PluginManager::globalSettings()->value(QLatin1String("General/OverrideLanguage")).toString();
+    if (!overrideLanguage.isEmpty())
+        uiLanguages.prepend(overrideLanguage);
+    const QString &creatorTrPath = QCoreApplication::applicationDirPath()
+            + '/' + RELATIVE_DATA_PATH + "/translations";
+    foreach (QString locale, uiLanguages) {
+        locale = QLocale(locale).name();
+        if (translator.load(QLatin1String("editorconfig_") + locale, creatorTrPath)) {
+            QApplication::instance()->installTranslator(&translator);
+            break;
+        } else if (locale == QLatin1String("C") /* overrideLanguage == "English" */) {
+            // use built-in
+            break;
+        } else if (locale.startsWith(QLatin1String("en")) /* "English" is built-in */) {
+            // use built-in
+            break;
+        }
+    }
 
     Core::IWizardFactory::registerFactoryCreator([] {
         return QList<Core::IWizardFactory *> {
