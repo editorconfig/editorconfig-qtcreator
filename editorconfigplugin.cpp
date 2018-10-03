@@ -14,6 +14,7 @@
 #include <coreplugin/iwizardfactory.h>
 #include <texteditor/textdocument.h>
 #include <extensionsystem/pluginmanager.h>
+#include <coreplugin/messagemanager.h>
 
 #include <QtPlugin>
 #include <QtDebug>
@@ -40,9 +41,10 @@ bool EditorConfigPlugin::initialize(const QStringList &arguments, QString *error
     QString overrideLanguage = PluginManager::globalSettings()->value(QLatin1String("General/OverrideLanguage")).toString();
     if (!overrideLanguage.isEmpty())
         uiLanguages.prepend(overrideLanguage);
-    const QString &creatorTrPath = QCoreApplication::applicationDirPath()
-            + '/' + RELATIVE_DATA_PATH + "/translations";
+    QString creatorTrPath(QCoreApplication::applicationDirPath() + '/' + RELATIVE_DATA_PATH + "/translations");
     foreach (QString locale, uiLanguages) {
+        Core::MessageManager::write(QString("Translation Path: \"%1\"").arg(creatorTrPath));
+
         locale = QLocale(locale).name();
         if (translator.load(QLatin1String("editorconfig_") + locale, creatorTrPath)) {
             QApplication::instance()->installTranslator(&translator);
