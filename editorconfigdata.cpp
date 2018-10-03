@@ -124,7 +124,7 @@ bool EditorConfigData::overrideCodec(const QTextCodec *&codec) const {
     QByteArray value = m_data["charset"];
     QTextCodec *newCodec = QTextCodec::codecForName(value);
     if (newCodec && codec != newCodec) {
-        message(tr("override charset with '%2'").arg(QString::fromLatin1(newCodec->name())));
+        message(tr("override charset with '%1'").arg(QString::fromLatin1(newCodec->name())));
         codec = newCodec;
         changed = true;
     }
