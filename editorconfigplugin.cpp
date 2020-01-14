@@ -101,7 +101,7 @@ void EditorConfigPlugin::overrideSettings(TextEditor::TextDocument *textDocument
     if (!changingDocuments.contains(textDocument)) {
         qCDebug(editorConfigLog) << "EditorConfig: overrideSettings for" << textDocument->filePath();
 
-        EditorConfigData data(textDocument->filePath());
+        EditorConfigData data(textDocument->filePath().toString());
 
         TextEditor::TabSettings tabSettings = textDocument->tabSettings();
         TextEditor::StorageSettings storageSettings = textDocument->storageSettings();

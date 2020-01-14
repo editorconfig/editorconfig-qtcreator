@@ -7,7 +7,6 @@
 
 #include <texteditor/tabsettings.h>
 #include <texteditor/storagesettings.h>
-#include <utils/fileutils.h>
 
 #include <QtCore/QObject>
 #include <QtCore/QMap>
@@ -18,7 +17,7 @@ namespace EditorConfig {
 class EditorConfigData : QObject {
     Q_OBJECT
 public:
-    EditorConfigData(const Utils::FileName &, QObject *parent = 0);
+    EditorConfigData(const QString &, QObject *parent = 0);
 
     bool overrideTabSettings(TextEditor::TabSettings &tabSettings) const;
     bool overrideStorageSettings(TextEditor::StorageSettings &storageSettings) const;

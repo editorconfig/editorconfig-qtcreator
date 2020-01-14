@@ -12,10 +12,10 @@
 
 using namespace EditorConfig;
 
-EditorConfigData::EditorConfigData(const Utils::FileName &name, QObject *parent) :
-    QObject(parent), file_name(name.toString())
+EditorConfigData::EditorConfigData(const QString &name, QObject *parent) :
+    QObject(parent), file_name(name)
 {
-    QByteArray nativeName = QFile::encodeName(name.toString());
+    QByteArray nativeName = QFile::encodeName(name);
     editorconfig_handle handle = editorconfig_handle_init();
     int ret = editorconfig_parse(nativeName.data(), handle);
     if (ret == 0) {
