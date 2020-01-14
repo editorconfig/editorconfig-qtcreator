@@ -11,7 +11,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true"/>
+  </property>
+  <property name="locale">
+   <locale language="English" country="UnitedStates"/>
   </property>
   <property name="title">
    <string>Path</string>
@@ -23,7 +26,10 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Path:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>Path:</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::PlainText</enum>
      </property>
     </widget>
    </item>

@@ -43,8 +43,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>override charset with &apos;%2&apos;</source>
-        <translation type="unfinished"></translation>
+        <source>override charset with &apos;%1&apos;</source>
+        <translation>Überschreibe den Zeichnsatz mit &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -75,16 +75,12 @@
 <context>
     <name>EditorConfigPage</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Path</source>
         <translation>Pfad</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Path:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>Path:</source>
+        <translation>Pfad:</translation>
     </message>
 </context>
 </TS>
