@@ -57,4 +57,5 @@ FORMS += \
     editorconfigpage.ui
 
 TRANSLATIONS += \
-    editorconfig_de.ts
+    editorconfig_de.ts \
+    editorconfig_it.ts
