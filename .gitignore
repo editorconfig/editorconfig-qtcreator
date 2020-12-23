@@ -1,2 +1,4 @@
 *.user
 *.qm
+/build
+/qtcreator
