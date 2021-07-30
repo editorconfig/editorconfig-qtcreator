@@ -43,7 +43,7 @@ bool EditorConfigPlugin::initialize(const QStringList &arguments, QString *error
         uiLanguages.prepend(overrideLanguage);
     QString creatorTrPath(QCoreApplication::applicationDirPath() + '/' + RELATIVE_DATA_PATH + "/translations");
     foreach (QString locale, uiLanguages) {
-        Core::MessageManager::write(QString("Translation Path: \"%1\"").arg(creatorTrPath));
+        Core::MessageManager::writeSilently(QString("Translation Path: \"%1\"").arg(creatorTrPath));
 
         locale = QLocale(locale).name();
         if (translator.load(QLatin1String("editorconfig_") + locale, creatorTrPath)) {

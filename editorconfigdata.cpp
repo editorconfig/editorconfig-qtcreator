@@ -32,16 +32,14 @@ EditorConfigData::EditorConfigData(const QString &name, QObject *parent) :
         editorconfig_handle_destroy(handle);
     }
     else if (ret > 0) {
-        Core::MessageManager::write(
+		Core::MessageManager::writeFlashing(
             QString::fromUtf8("editorconfig: Parse error in file \"%1\", line %2")
-                .arg(QString::fromUtf8(editorconfig_handle_get_err_file(handle))).arg(ret),
-            Core::MessageManager::Flash);
+				.arg(QString::fromUtf8(editorconfig_handle_get_err_file(handle))).arg(ret));
     }
     else {
-        Core::MessageManager::write(
+		Core::MessageManager::writeFlashing(
             QString::fromUtf8("editorconfig: %1")
-                .arg(QString::fromUtf8(editorconfig_get_error_msg(ret))),
-            Core::MessageManager::Flash);
+				.arg(QString::fromUtf8(editorconfig_get_error_msg(ret))));
     }
 }
 
@@ -133,6 +131,5 @@ bool EditorConfigData::overrideCodec(const QTextCodec *&codec) const {
 }
 
 void EditorConfigData::message(const QString &msg) const {
-    Core::MessageManager::write(QStringLiteral("%1: %2").arg(file_name, msg),
-                                Core::MessageManager::Silent);
+	Core::MessageManager::writeSilently(QStringLiteral("%1: %2").arg(file_name, msg));
 }
