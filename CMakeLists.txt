@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(EditorConfig LANGUAGES CXX VERSION 0.3.3)
+project(EditorConfig LANGUAGES CXX VERSION 0.3.4)
 
 #find_package(Qt5 COMPONENTS Core Widgets Designer)
 find_package(QtCreator REQUIRED)

@@ -1,9 +1,9 @@
 {
     \"Name\" : \"EditorConfig\",
-    \"Version\" : \"0.3.2\",
-    \"CompatVersion\" : \"0.3.2\",
+    \"Version\" : \"0.3.4\",
+    \"CompatVersion\" : \"0.3.4\",
     \"Vendor\" : \"Herbert Graeber\",
-    \"Copyright\" : \"(C) 2016,2017 Herbert Graeber\",
+    \"Copyright\" : \"(C) 2021 Herbert Graeber\",
     \"License\" : [ \"Commercial Usage\",
                   \"\",
                   \"Licensees holding valid Qt Commercial licenses may use this plugin in accordance with the Qt Commercial License Agreement provided with the Software or, alternatively, in accordance with the terms contained in a written agreement between you and The Qt Company.\",
