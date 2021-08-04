@@ -8,6 +8,7 @@
 #include "editorconfiglogging.h"
 #include "editorconfigwizard.h"
 
+#include <app/app_version.h>
 #include <coreplugin/icore.h>
 #include <coreplugin/editormanager/editormanager.h>
 #include <coreplugin/idocument.h>
@@ -43,7 +44,11 @@ bool EditorConfigPlugin::initialize(const QStringList &arguments, QString *error
         uiLanguages.prepend(overrideLanguage);
     QString creatorTrPath(QCoreApplication::applicationDirPath() + '/' + RELATIVE_DATA_PATH + "/translations");
     foreach (QString locale, uiLanguages) {
+#if IDE_VERSION_MAJOR >= 5 || IDE_VERSION_MAJOR == 4 && IDE_VERSION_MINOR >= 15
         Core::MessageManager::writeSilently(QString("Translation Path: \"%1\"").arg(creatorTrPath));
+#else
+        Core::MessageManager::write(QString("Translation Path: \"%1\"").arg(creatorTrPath));
+#endif
 
         locale = QLocale(locale).name();
         if (translator.load(QLatin1String("editorconfig_") + locale, creatorTrPath)) {
