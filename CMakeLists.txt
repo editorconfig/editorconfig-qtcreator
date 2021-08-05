@@ -1,3 +1,6 @@
+#
+# Copyright 2021 Herbert Graeber
+#
 cmake_minimum_required(VERSION 3.10)
 
 project(EditorConfig LANGUAGES CXX VERSION 0.3.5)

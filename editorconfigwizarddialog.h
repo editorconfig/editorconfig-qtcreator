@@ -1,5 +1,5 @@
 /*
- *  Copyright 2017 Herbert Graeber
+ *  Copyright 2021 Herbert Graeber
  */
 #ifndef EDITORCONFIGWIZARDDIALOG_H
 #define EDITORCONFIGWIZARDDIALOG_H

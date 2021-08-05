@@ -1,5 +1,5 @@
 /*
- *  Copyright 2016 Herbert Graeber
+ *  Copyright 2021 Herbert Graeber
  */
 
 #ifndef EDITORCONFIGDATA_H

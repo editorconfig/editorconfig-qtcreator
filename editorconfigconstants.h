@@ -1,5 +1,5 @@
 /*
- *  Copyright 2016 herbert
+ *  Copyright 2021 herbert
  */
 #ifndef EDITORCONFIGCONSTANTS_H
 #define EDITORCONFIGCONSTANTS_H
