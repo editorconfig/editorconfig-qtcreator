@@ -6,7 +6,7 @@
 
 #include <editorconfig/editorconfig.h>
 
-#include "app/app_version.h"
+#include <app/app_version.h>
 #include <coreplugin/messagemanager.h>
 
 #include <QtCore/QByteArray>

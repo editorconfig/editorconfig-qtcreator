@@ -5,16 +5,13 @@ cmake_minimum_required(VERSION 3.10)
 
 project(EditorConfig LANGUAGES CXX VERSION 0.3.5)
 
-#find_package(Qt5 COMPONENTS Core Widgets Designer)
 find_package(QtCreator REQUIRED)
 find_package(EditorConfig 0.12 REQUIRED)
 find_package(KF5SyntaxHighlighting)
 
-set(CMAKE_AUTOUIC On)
-
-add_qtc_plugin(Editorconfig
+add_qtc_plugin(EditorConfig
   PLUGIN_DEPENDS QtCreator::Core QtCreator::ProjectExplorer QtCreator::TextEditor
-  DEPENDS editorconfig_shared
+  DEPENDS editorconfig_shared KF5::SyntaxHighlighting
   PROPERTIES
     AUTOMOC On
     AUTOUIC On
