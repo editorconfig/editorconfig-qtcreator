@@ -3,7 +3,7 @@
 #
 cmake_minimum_required(VERSION 3.10)
 
-project(EditorConfig LANGUAGES CXX VERSION 0.3.5)
+project(Editorconfig LANGUAGES CXX VERSION 0.3.6)
 
 find_package(QtCreator REQUIRED)
 find_package(EditorConfig 0.12 REQUIRED)
