@@ -2,8 +2,8 @@
  *  Copyright 2016,2017 Herbert Graeber
  */
 
-#ifndef EDITORCONFIG_H
-#define EDITORCONFIG_H
+#ifndef EDITORCONFIGPLUGIN_H
+#define EDITORCONFIGPLUGIN_H
 
 #include "editorconfig_global.h"
 
@@ -20,17 +20,17 @@
 namespace EditorConfig {
 namespace Internal {
 
-class EditorConfigPlugin : public ExtensionSystem::IPlugin
+class EditorConfigPlugin final : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "EditorConfig.json")
 
 public:
-    EditorConfigPlugin();
-    ~EditorConfigPlugin();
+    EditorConfigPlugin() = default;
+    ~EditorConfigPlugin() final;
 
-    bool initialize(const QStringList &arguments, QString *errorString);
-    void extensionsInitialized();
+    bool initialize(const QStringList &arguments, QString *errorString) final;
+    void extensionsInitialized() final;
     ShutdownFlag aboutToShutdown();
 
 private slots:

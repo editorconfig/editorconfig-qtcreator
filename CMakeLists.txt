@@ -12,6 +12,10 @@ set(CMAKE_AUTOUIC On)
 add_qtc_plugin(Editorconfig
   PLUGIN_DEPENDS QtCreator::Core QtCreator::ProjectExplorer QtCreator::TextEditor
   DEPENDS editorconfig_shared
+  PROPERTIES
+    AUTOMOC On
+    AUTOUIC On
+    AUTORCC On
   SOURCES
     editorconfigconstants.h
     editorconfigdata.h editorconfigdata.cpp

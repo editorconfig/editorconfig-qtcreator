@@ -1,7 +1,7 @@
 {
-    \"Name\" : \"EditorConfig\",
-    \"Version\" : \"0.3.5\",
-    \"CompatVersion\" : \"0.3.5\",
+    \"Name\" : \"Editorconfig\",
+    \"Version\" : \"0.3.6\",
+    \"CompatVersion\" : \"0.3.2\",
     \"Vendor\" : \"Herbert Graeber\",
     \"Copyright\" : \"(C) 2021 Herbert Graeber\",
     \"License\" : [ \"Commercial Usage\",
@@ -13,6 +13,6 @@
                   \"Alternatively, this plugin may be used under the terms of the GNU Lesser General Public License version 2.1 or version 3 as published by the Free Software Foundation.  Please review the following information to ensure the GNU Lesser General Public License requirements will be met: https://www.gnu.org/licenses/lgpl.html and http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.\"
     ],
     \"Description\" : \"Override tab, line ending and file ending settings of source files from .editorconfig\",
-    \"Url\" : \"http://graeber-clan.de\",
+    \"Url\" : \"https://github.com/editorconfig/editorconfig-qtcreator\",
     $$dependencyList
 }

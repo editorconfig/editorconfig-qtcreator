@@ -24,10 +24,6 @@
 using namespace ExtensionSystem;
 using namespace EditorConfig::Internal;
 
-EditorConfigPlugin::EditorConfigPlugin()
-{
-}
-
 EditorConfigPlugin::~EditorConfigPlugin()
 {
 }
@@ -62,7 +58,6 @@ bool EditorConfigPlugin::initialize(const QStringList &arguments, QString *error
             break;
         }
     }
-
     Core::IWizardFactory::registerFactoryCreator([] {
         return QList<Core::IWizardFactory *> {
             new EditorConfigWizard
