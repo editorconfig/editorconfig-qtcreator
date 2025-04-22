@@ -48,7 +48,7 @@ variables. Static editorconfig-core-c and pcre libraries are best for easy
 deployment of the plugin.
 
 For building plugins you usually have to build QtCreator yourself. For
-openSUSE the special libqt5-creator-plusgin-devel RPM provided in the
+openSUSE the special libqt5-creator-plugin-devel RPM provided in the
 repository mentioned above caon be used instead.
 
 The environment variables `QTC_SOURCE` shall contain the path to qt-creators
