@@ -3,7 +3,7 @@
 This is an EditorConfig plugin for Qt-Creator. It has no real user
 interface and simply overrides all settings of text documents with
 a matching entry in an .editorconfig file. QtCreators own settings
-will be ignored for concernd files.
+will be ignored for concerned files.
 
 ## License
 
