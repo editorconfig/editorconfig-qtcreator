@@ -79,7 +79,7 @@ The EditorConfig QtCreator plugin supports the following EditorConfig properties
 - trim_trailing_whitespace
 - insert_final_newline
 
-## Additonal Features
+## Additional Features
 
 Initial EditorConfig files may be created using the new file wizard. The initial
 values for this file are taken from the current projects C++ and Qml settings.
