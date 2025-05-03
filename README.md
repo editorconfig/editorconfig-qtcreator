@@ -3,7 +3,7 @@
 This is an EditorConfig plugin for Qt-Creator. It has no real user
 interface and simply overrides all settings of text documents with
 a matching entry in an .editorconfig file. QtCreators own settings
-will be ignored for concernd files.
+will be ignored for concerned files.
 
 ## License
 
@@ -27,9 +27,8 @@ http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
 
 ### Binaries
 
-A precompiled plugin for QtCreator Windows with statically linked
-editorconfig-core-c and pcre can be found
-[here](https://github.com/editorconfig/editorconfig-qtcreator/releases/latest).
+There is a [precompiled plugin for QtCreator Windows with statically linked
+editorconfig-core-c and pcre](https://github.com/editorconfig/editorconfig-qtcreator/releases/latest).
 It has to be unpacked into the Qt folder (Usually `C:\Qt`).
 
 RPMs for openSUSE Leap 42.1 and Tumbleweed are available from the
@@ -49,7 +48,7 @@ variables. Static editorconfig-core-c and pcre libraries are best for easy
 deployment of the plugin.
 
 For building plugins you usually have to build QtCreator yourself. For
-openSUSE the special libqt5-creator-plusgin-devel RPM provided in the
+openSUSE the special libqt5-creator-plugin-devel RPM provided in the
 repository mentioned above caon be used instead.
 
 The environment variables `QTC_SOURCE` shall contain the path to qt-creators
@@ -80,7 +79,7 @@ The EditorConfig QtCreator plugin supports the following EditorConfig properties
 - trim_trailing_whitespace
 - insert_final_newline
 
-## Additonal Features
+## Additional Features
 
 Initial EditorConfig files may be created using the new file wizard. The initial
 values for this file are taken from the current projects C++ and Qml settings.
